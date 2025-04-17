@@ -6,6 +6,11 @@
       "context": "node_modules/jquery/dist"
     },
     {
+      "from": "**",
+      "to": "vendor/bootstrap",
+      "context": "node_modules/bootstrap/dist"
+    },
+    {
       "from": "config",
       "to": "../config"
     }
