@@ -33,6 +33,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.4",
+    "jquery": "^3.7.1",
     "mini-css-extract-plugin": "^2.7.7",
     "sass": "^1.86.0",
     "sass-loader": "^16.0.5",

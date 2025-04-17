@@ -27,7 +27,7 @@ export default class AppScaler {
    */
   handleResize() {
     const appWidth = this.appWidth || this.appElement.offsetWidth;
-    const appHeight = this.appHeight  || this.appElement.offsetHeight;
+    const appHeight = this.appHeight || this.appElement.offsetHeight;
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 

@@ -1,0 +1,7 @@
+app:
+  display:
+    # The display resolution of the application.
+    # Note: This setting is not magical; Changing it will not necessarily achieve the results
+    # you expect.
+    width: 1920
+    height: 1080

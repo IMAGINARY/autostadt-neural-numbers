@@ -1,6 +1,11 @@
 {
   "patterns": [
     {
+      "from": "**",
+      "to": "vendor/jquery",
+      "context": "node_modules/jquery/dist"
+    },
+    {
       "from": "config",
       "to": "../config"
     }

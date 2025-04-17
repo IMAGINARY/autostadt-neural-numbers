@@ -5,6 +5,7 @@ import showFatalError from './helpers-web/show-fatal-error';
 import CfgLoader from './loader/cfg-loader';
 import CfgReaderFetch from './loader/cfg-reader-fetch';
 import AppScaler from './helpers-web/app-scaler';
+import AutostadtNeuralNumbersApp from './lib/autostadt-neural-numbers-app';
 
 (async () => {
   try {
@@ -29,6 +30,10 @@ import AppScaler from './helpers-web/app-scaler';
     ]).catch((err) => {
       throw new Error(`Error loading configuration: ${err.message}`);
     });
+
+    const app = new AutostadtNeuralNumbersApp(config);
+    const scaler = new AppScaler(app.$element[0], app.width, app.height);
+    $('[data-component=AutostadtNeuralNumbersApp]').replaceWith(scaler.element);
   } catch (err) {
     showFatalError('Fatal error', err);
     console.error(err);
