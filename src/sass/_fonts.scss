@@ -1,21 +1,26 @@
 @use "@fontsource-utils/scss" as fontsource;
-//@use "@fontsource/space-grotesk/scss" as RobotoCondensed;
-//
-//@include fontsource.faces(
-//  $metadata: RobotoCondensed.$metadata,
-//  $subsets: latin,
-//  $weights: [400, 700],
-//  $styles: normal,
-//  $display: auto,
-//  $directory: "~@fontsource/roboto-condensed/files",
-//);
-//
-//@mixin roboto-condensed-regular {
-//  font-family: 'Roboto Condensed', sans-serif;
-//  font-weight: 400;
-//}
-//
-//@mixin roboto-condensed-bold {
-//  font-family: 'Roboto Condensed', sans-serif;
-//  font-weight: 700;
-//}
+@use "@fontsource/space-grotesk/scss" as SpaceGrotesk;
+
+@include fontsource.faces(
+  $metadata: SpaceGrotesk.$metadata,
+  $subsets: latin,
+  $weights: [300, 400, 700],
+  $styles: normal,
+  $display: auto,
+  $directory: "~@fontsource/space-grotesk/files",
+);
+
+@mixin space-grotesk-light {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 300;
+}
+
+@mixin space-grotesk-regular {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+}
+
+@mixin space-grotesk-bold {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
