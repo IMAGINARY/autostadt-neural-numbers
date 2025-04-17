@@ -1,0 +1,9 @@
+@use 'colors';
+
+.bg-primary {
+  background-color: colors.$c-bg-primary;
+}
+
+.bg-secondary {
+  background-color: colors.$c-bg-secondary;
+}

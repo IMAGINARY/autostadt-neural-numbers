@@ -1,0 +1,13 @@
+@use 'type';
+@use 'colors';
+@use 'base';
+@use 'buttons';
+@use 'utility';
+
+.theme-ki-und-du {
+  @include type.regular-text;
+  font-size: 18px;
+  line-height: 1.66;
+
+  background-color: colors.$c-black;
+}

@@ -1,6 +1,6 @@
-@use "fonts";
-@use "type";
+@use "ki-und-du/fonts";
+@use "ki-und-du/type";
 @use "colors";
 @use "base";
 @use "mod_fatalerror";
-@use "theme_ki-und-du";
+@use "ki-und-du/theme" as kiUndDu;

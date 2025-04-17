@@ -1,34 +1,3 @@
-@use 'colors';
-@use 'type';
-
-html, body {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
+html {
   font-size: 18px;
-  line-height: 1.66;
-}
-
-body {
-  @include type.regular-text;
-
-  background-color: colors.$c-black;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  @include type.heading-text;
-
-  color: colors.$c-black;
-  text-transform: uppercase;
-}
-
-h1 {
-  font-size: 4.5rem;
-  line-height: 1.2;
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.75em;
 }

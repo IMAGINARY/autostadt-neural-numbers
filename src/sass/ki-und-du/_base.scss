@@ -1,0 +1,33 @@
+@use "colors";
+@use "type";
+
+h1, h2, h3, h4, h5, h6 {
+  @include type.heading-text;
+
+  color: colors.$c-black;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 4.5rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75em;
+}
+
+.app {
+  background-color: colors.$c-bg-primary;
+  display: flex;
+}
+
+.app-frame {
+  position: relative;
+  margin: 4.333rem 5rem 3.75rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid colors.$c-black;
+  border-bottom: 1px solid colors.$c-black;
+}
