@@ -1,4 +1,8 @@
 {
   "patterns": [
+    {
+      "from": "config",
+      "to": "../config"
+    }
   ]
 }

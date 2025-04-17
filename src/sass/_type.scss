@@ -1,9 +1,9 @@
 @use 'fonts';
 
 @mixin regular-text {
-  @include fonts.roboto-condensed-regular;
+  //@include fonts.roboto-condensed-regular;
 }
 
 @mixin heading-text {
-  @include fonts.roboto-condensed-bold;
+  //@include fonts.roboto-condensed-bold;
 }
