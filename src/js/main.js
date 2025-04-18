@@ -28,6 +28,7 @@ import AutostadtNeuralNumbersApp from './lib/autostadt-neural-numbers-app';
     const cfgLoader = new CfgLoader(CfgReaderFetch, yaml.load);
     const config = await cfgLoader.load([
       'config/app.yml',
+      'config/ai.yml',
       'config/i18n.yml',
       settingsFilename,
     ]).catch((err) => {

@@ -1,0 +1,56 @@
+@use "ki-und-du/colors";
+@use "ki-und-du/fonts";
+
+.neural-numbers-component {
+  .drawcanvas {
+    opacity: 0.8;
+  }
+
+  .bars {
+    &:before {
+      display: block;
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 1.5rem;
+      background-image: url('../../static/img/bars-scale.svg');
+    }
+
+    .bar {
+      background-color: colors.$c-accent;
+      border: none;
+      width: 0.555rem;
+    }
+  }
+
+  .input-canvas-wrapper {
+    border: none;
+    background-color: colors.$c-white;
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+
+  .output-wrapper {
+    background: transparent;
+    border: 0.15rem solid white;
+    border-radius: 1.5rem;
+
+    &:before {
+      display: none;
+    }
+
+    .digit {
+      @include fonts.space-grotesk-light;
+      color: colors.$c-black;
+    }
+  }
+
+  .bartxt {
+    @include fonts.space-grotesk-regular;
+    font-size: 1.333rem;
+    padding-bottom: 0;
+    margin-bottom: -0.15em;
+  }
+}

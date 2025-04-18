@@ -1,0 +1,4 @@
+ai:
+  modelPath: "vendor/neural-numbers/assets/models/my-model.json"
+  trainingImagePath: "vendor/neural-numbers/assets/mnist/mnist_images.png"
+  trainingLabelPath: "vendor/neural-numbers/assets/mnist/mnist_labels_uint8"

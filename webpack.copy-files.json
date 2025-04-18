@@ -2,13 +2,18 @@
   "patterns": [
     {
       "from": "**",
-      "to": "vendor/jquery",
+      "to": "../vendor/jquery",
       "context": "node_modules/jquery/dist"
     },
     {
       "from": "**",
-      "to": "vendor/bootstrap",
+      "to": "../vendor/bootstrap",
       "context": "node_modules/bootstrap/dist"
+    },
+    {
+      "from": "**",
+      "to": "../vendor/neural-numbers",
+      "context": "vendor/neural-numbers"
     },
     {
       "from": "config",

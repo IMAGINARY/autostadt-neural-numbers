@@ -5,6 +5,7 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
+  max-width: $info-col-width * 1.2;
 }
 
 .body {
@@ -24,4 +25,49 @@ h1 {
   position: absolute;
   bottom: 0;
   left: $ui-col-start;
+}
+
+$nn-component-size: 16rem;
+$nn-component-bars-height: $nn-component-size * 0.75;
+$nn-component-bars-width: $nn-component-size * 1.5;
+
+#neural-numbers-component {
+  position: absolute;
+  bottom: 360px;
+  left: $ui-col-start;
+  align-items: flex-end;
+
+  .stage {
+    margin-right: 1.555rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .input-canvas-wrapper {
+    width: $nn-component-size;
+    height: $nn-component-size;
+  }
+
+  .input-canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  .output-wrapper {
+    width: $nn-component-size;
+    height: $nn-component-size;
+
+    .digit {
+      width: 100%;
+      height: 100%;
+      line-height: $nn-component-size;
+      font-size: 11.3rem;
+    }
+  }
+
+  .bars {
+    width: $nn-component-bars-width;
+    height: 12rem;
+  }
 }

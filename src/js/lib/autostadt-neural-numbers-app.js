@@ -1,3 +1,4 @@
+/* globals IMAGINARY */
 import formatText from '../helpers-web/format-text';
 import DefaultContentOverlay from './default-content-overlay';
 import TrainingContentOverlay from './training-content-overlay';
@@ -5,6 +6,7 @@ import TrainingContentOverlay from './training-content-overlay';
 export default class AutostadtNeuralNumbersApp {
   #lang;
   #modeSwitchButtons = {};
+  #nnComponent = null;
 
   constructor(config) {
     this.config = config;
@@ -34,6 +36,7 @@ export default class AutostadtNeuralNumbersApp {
     this.showContentOverlay('default');
 
     this.initNavElements($content);
+    this.initNNComponent($content);
     this.setLang(config.i18n.defaultLanguage);
     this.switchToMode('default');
   }
@@ -71,6 +74,36 @@ export default class AutostadtNeuralNumbersApp {
       .addClass(['button-set'])
       .appendTo($container)
       .append(Object.values(this.#modeSwitchButtons));
+  }
+
+  initNNComponent($container) {
+    const $nnContainer = $('<div></div>')
+      .attr('id', 'neural-numbers-component')
+      .appendTo($container);
+
+    this.#nnComponent = new IMAGINARY.NeuralNumbers(
+      $nnContainer,
+      {
+        modelPath: this.config.ai.modelPath,
+        showBars: true,
+        showNormalizer: false,
+        showTraining: false,
+        showOutput: true,
+        verticalBars: false,
+      }
+    );
+    //
+    // this.nnTrainingComponent = new IMAGINARY.NeuralNumbersTraining(
+    //   this.nnComponent,
+    //   this.$nnTrainingUIContainer,
+    //   {
+    //     trainingImagePath: props.trainingImagePath,
+    //     trainingLabelPath: props.trainingLabelPath,
+    //     imageCountLabelText: `<div class='image-count-label-i18n de'>${props.imageCountLabelText.de}</div><div class='image-count-label-i18n en'>${props.imageCountLabelText.en}</div>`,
+    //     predictedAccuracyLabelText: `<div class='predicted-accuracy-label-i18n de'>${props.predictedAccuracyLabelText.de}</div><div class='predicted-accuracy-label-i18n en'>${props.predictedAccuracyLabelText.en}</div>`,
+    //   }
+    // );
+    this.#nnComponent.init();
   }
 
   setLang(code) {
