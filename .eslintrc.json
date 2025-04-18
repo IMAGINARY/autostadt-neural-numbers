@@ -22,6 +22,15 @@
       "functions": "never"
     }],
     "no-param-reassign": ["error", { "props": false }],
+    "lines-between-class-members": [
+      "error",
+      {
+        "enforce": [
+          { "blankLine": "always", "prev": "*", "next": "*" },
+          { "blankLine": "never", "prev": "field", "next": "field" }
+        ]
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",

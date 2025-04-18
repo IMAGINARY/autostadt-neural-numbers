@@ -4,7 +4,6 @@ import TrainingContentOverlay from './training-content-overlay';
 
 export default class AutostadtNeuralNumbersApp {
   #lang;
-
   #modeSwitchButtons = {};
 
   constructor(config) {
