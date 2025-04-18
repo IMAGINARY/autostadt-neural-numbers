@@ -1,0 +1,21 @@
+ui-langSwitcherButton: "English"
+ui-inputPanelLabel: "Deine Eingabe"
+ui-outputPanelLabel: "Die Vermutung der KI"
+#
+ui-trainingPanel-stepLabel: "Eine Zahl\ntrainieren"
+ui-trainingPanel-runLabel: "Viele Zahlen\ntrainieren"
+ui-trainingPanel-imageCount: "Verwendete Bilder:"
+ui-trainingPanel-predictedAccuracy: "Vorhergesagte Genauigkeit:"
+ui-trainingPanel-restart: "Training\nzurücksetzen"
+#
+nav-defaultMode: "VorTrainierte KI"
+nav-trainingMode: "KI Selbst Trainieren"
+#
+defaultMode-title: "Erkennt\ndie KI deine\nZahl?"
+defaultMode-body: "Statt nur eine einzige Antwort zu geben, prüft die KI mehrere Möglichkeiten und bewertet, wie wahrscheinlich jede davon ist. Je klarer die Merkmale, desto sicherer ist sie – doch bei unscharfen oder uneindeutigen Eingaben kann sie ins Grübeln kommen oder falsch liegen."
+defaultMode-inputPanelCallout: "Schreibe eine Zahl zwischen 0 und 9"
+#
+trainingMode-title: "Trainiere\nEine KI\nSelbst!"
+trainingMode-body: "Die vorhergesagte Genauigkeit des Trainings steigt anfangs schnell, später langsamer. Manchmal sinkt sie zwischendurch etwas. Fluktuation ist normal. Wie im Leben sind Fehler manchmal hilfreich, um zu lernen und besser zu werden."
+trainingMode-inputPanelCallout: "Du kannst das Training pausieren und die KI im aktuellen Trainingszustand ausprobieren."
+trainingMode-inputPanelRunningLabel: "Training …"

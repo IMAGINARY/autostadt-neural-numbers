@@ -17,20 +17,39 @@ import AutostadtNeuralNumbersApp from './lib/autostadt-neural-numbers-app';
     const settingsFileUnsafe = urlParams.get('settings');
     if (urlParams.get('settings')) {
       if (!urlParams.get('settings').match(/^[a-zA-Z0-9_-]+\.yml$/)) {
-        console.warn('Invalid settings file name. Ignoring. Use only alphanumeric characters, _ or -. and .yml extension.');
+        console.warn(
+          'Invalid settings file name. Ignoring. Use only alphanumeric characters, _ or -. and .yml extension.');
       } else {
         settingsFilename = settingsFileUnsafe;
       }
     }
 
+    // Load the configuration
     const cfgLoader = new CfgLoader(CfgReaderFetch, yaml.load);
     const config = await cfgLoader.load([
       'config/app.yml',
+      'config/i18n.yml',
       settingsFilename,
     ]).catch((err) => {
       throw new Error(`Error loading configuration: ${err.message}`);
     });
 
+    // Load the translations
+    const trLangCodes = Object.keys(config.i18n.languages);
+    config.i18n.strings = await cfgLoader.load(
+      trLangCodes.map((code) => `tr/${code}.yml`),
+      (cfg, fileName) => {
+        // Get the lang code from the file name
+        const langCode = fileName.split('/').pop().split('.')[0];
+        return {
+          [langCode]: cfg,
+        };
+      }
+    ).catch((err) => {
+      throw new Error(`Error loading translations: ${err.message}`);
+    });
+
+    // Initialize the app
     const app = new AutostadtNeuralNumbersApp(config);
     const scaler = new AppScaler(app.$element[0], app.width, app.height);
     $('[data-component=AutostadtNeuralNumbersApp]').replaceWith(scaler.element);
