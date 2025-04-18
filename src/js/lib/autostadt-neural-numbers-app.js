@@ -18,18 +18,22 @@ export default class AutostadtNeuralNumbersApp {
         height: this.height,
       });
 
-    const $frame = $('<div></div>')
-      .addClass('app-frame')
-      .appendTo(this.$element);
+    const $content = $('<div></div>')
+      .addClass('app-content')
+      .appendTo(
+        $('<div></div>')
+          .addClass('app-frame')
+          .appendTo(this.$element)
+      );
 
     this.contentOverlays = {};
     this.currentContentOverlay = null;
 
-    this.addContentOverlay('default', new DefaultContentOverlay(), $frame);
-    this.addContentOverlay('training', new TrainingContentOverlay(), $frame);
+    this.addContentOverlay('default', new DefaultContentOverlay(), $content);
+    this.addContentOverlay('training', new TrainingContentOverlay(), $content);
     this.showContentOverlay('default');
 
-    this.initNavElements($frame);
+    this.initNavElements($content);
     this.setLang(config.i18n.defaultLanguage);
     this.switchToMode('default');
   }
@@ -38,6 +42,7 @@ export default class AutostadtNeuralNumbersApp {
     // Language switcher button
     $('<button />')
       .attr('data-i18n-text', 'ui-langSwitcherButton')
+      .attr('id', 'lang-switcher')
       .addClass('button')
       .on('click', () => {
         this.toggleLang();
@@ -62,7 +67,8 @@ export default class AutostadtNeuralNumbersApp {
     };
 
     $('<div></div>')
-      .addClass('button-set')
+      .attr('id', 'mode-switcher')
+      .addClass(['button-set'])
       .appendTo($container)
       .append(Object.values(this.#modeSwitchButtons));
   }

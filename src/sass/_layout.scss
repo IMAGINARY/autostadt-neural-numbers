@@ -1,0 +1,27 @@
+$info-col-width: 24%;
+$ui-col-start: 38%;
+
+h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.body {
+  position: absolute;
+  top: 500px;
+  left: 0;
+  max-width: $info-col-width;
+}
+
+#lang-switcher {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#mode-switcher {
+  position: absolute;
+  bottom: 0;
+  left: $ui-col-start;
+}

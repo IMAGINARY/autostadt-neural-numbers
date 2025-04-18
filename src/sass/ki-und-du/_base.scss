@@ -25,9 +25,15 @@ h2 {
 }
 
 .app-frame {
-  position: relative;
+  display: flex;
+  width: 100%;
   margin: 4.333rem 5rem 3.75rem;
   padding: 1.25rem 0;
   border-top: 1px solid colors.$c-black;
   border-bottom: 1px solid colors.$c-black;
+}
+
+.app-content {
+  width: 100%;
+  position: relative;
 }
