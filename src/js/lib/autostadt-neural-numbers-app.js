@@ -1,7 +1,11 @@
 import formatText from '../helpers-web/format-text';
+import DefaultContentOverlay from './default-content-overlay';
+import TrainingContentOverlay from './training-content-overlay';
 
 export default class AutostadtNeuralNumbersApp {
   #lang;
+
+  #modeSwitchButtons = {};
 
   constructor(config) {
     this.config = config;
@@ -19,9 +23,49 @@ export default class AutostadtNeuralNumbersApp {
       .addClass('app-frame')
       .appendTo(this.$element);
 
-    this.initTextElements($frame);
+    this.contentOverlays = {};
+    this.currentContentOverlay = null;
+
+    this.addContentOverlay('default', new DefaultContentOverlay(), $frame);
+    this.addContentOverlay('training', new TrainingContentOverlay(), $frame);
+    this.showContentOverlay('default');
+
     this.initNavElements($frame);
     this.setLang(config.i18n.defaultLanguage);
+    this.switchToMode('default');
+  }
+
+  initNavElements($container) {
+    // Language switcher button
+    $('<button />')
+      .attr('data-i18n-text', 'ui-langSwitcherButton')
+      .addClass('button')
+      .on('click', () => {
+        this.toggleLang();
+      })
+      .appendTo($container);
+
+    this.#modeSwitchButtons = {
+      default: $('<button />')
+        .attr('data-i18n-text', 'nav-defaultMode')
+        .addClass('button')
+        .on('click', () => {
+          this.switchToMode('default');
+        })
+        .appendTo($container),
+      training: $('<button />')
+        .attr('data-i18n-text', 'nav-trainingMode')
+        .addClass('button')
+        .on('click', () => {
+          this.switchToMode('training');
+        })
+        .appendTo($container),
+    };
+
+    $('<div></div>')
+      .addClass('button-set')
+      .appendTo($container)
+      .append(Object.values(this.#modeSwitchButtons));
   }
 
   setLang(code) {
@@ -43,25 +87,29 @@ export default class AutostadtNeuralNumbersApp {
     this.setLang(langCodes[nextLangIndex]);
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  initTextElements($container) {
-    $('<h1>')
-      .attr('data-i18n-text', 'defaultMode-title')
-      .appendTo($container);
-
-    $('<p>')
-      .attr('data-i18n-text', 'defaultMode-body')
-      .appendTo($container);
+  switchToMode(mode) {
+    if (!this.contentOverlays[mode]) {
+      throw new Error(`Attempt to switch to invalid mode: ${mode}`);
+    }
+    this.showContentOverlay(mode);
+    Object.values(this.#modeSwitchButtons).forEach(($button) => {
+      $button.removeClass('active');
+    });
+    this.#modeSwitchButtons[mode].addClass('active');
   }
 
-  initNavElements($container) {
-    $('<button />')
-      .attr('data-i18n-text', 'ui-langSwitcherButton')
-      .addClass('button')
-      .on('click', () => {
-        this.toggleLang();
-      })
-      .appendTo($container);
+  addContentOverlay(name, contentOverlay, $container) {
+    this.contentOverlays[name] = contentOverlay;
+    contentOverlay.$element.hide();
+    $container.append(contentOverlay.$element);
+  }
+
+  showContentOverlay(name) {
+    if (this.currentContentOverlay) {
+      this.currentContentOverlay.$element.hide();
+    }
+    this.currentContentOverlay = this.contentOverlays[name];
+    this.currentContentOverlay.$element.show();
   }
 
   updateTexts() {

@@ -10,7 +10,13 @@
   background-color: colors.$c-surface;
   padding: 0 2.33rem;
 
-  &:active, .active {
+  &:active, &.active {
     background-color: colors.$c-accent;
   }
+}
+
+.button-set {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
 }
