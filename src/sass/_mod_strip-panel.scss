@@ -1,0 +1,34 @@
+$strip-panel-height: 7.5rem;
+
+.strip-panel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: $strip-panel-height;
+  border-radius: $strip-panel-height * 0.5;
+  padding: 1.5rem;
+
+  .strip-panel-division {
+    display: flex;
+    flex-direction: row;
+    border-right: 0.5px solid black;
+    padding: 0 0.75rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .button-label-group {
+      margin: 0 0.75rem;
+    }
+
+    .value-label-group {
+      margin: 0 0.75rem;
+    }
+  }
+}

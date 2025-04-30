@@ -2,11 +2,14 @@
 import formatText from '../helpers-web/format-text';
 import DefaultContentOverlay from './default-content-overlay';
 import TrainingContentOverlay from './training-content-overlay';
+import TrainingPanelComponent from './training-panel-component';
 
 export default class AutostadtNeuralNumbersApp {
   #lang;
   #modeSwitchButtons = {};
   #nnComponent = null;
+  #nnTrainingController = null;
+  #nnTrainingComponent = null;
 
   constructor(config) {
     this.config = config;
@@ -20,6 +23,11 @@ export default class AutostadtNeuralNumbersApp {
         height: this.height,
       });
 
+    this.contentOverlays = {};
+    this.currentContentOverlay = null;
+  }
+
+  async init() {
     const $content = $('<div></div>')
       .addClass('app-content')
       .appendTo(
@@ -28,17 +36,14 @@ export default class AutostadtNeuralNumbersApp {
           .appendTo(this.$element)
       );
 
-    this.contentOverlays = {};
-    this.currentContentOverlay = null;
-
     this.addContentOverlay('default', new DefaultContentOverlay(), $content);
     this.addContentOverlay('training', new TrainingContentOverlay(), $content);
     this.showContentOverlay('default');
 
     this.initNavElements($content);
-    this.initNNComponent($content);
-    this.setLang(config.i18n.defaultLanguage);
-    this.switchToMode('default');
+    await this.initNNComponent($content);
+    this.setLang(this.config.i18n.defaultLanguage);
+    this.switchToDefaultMode();
   }
 
   initNavElements($container) {
@@ -57,14 +62,14 @@ export default class AutostadtNeuralNumbersApp {
         .attr('data-i18n-text', 'nav-defaultMode')
         .addClass('button')
         .on('click', () => {
-          this.switchToMode('default');
+          this.switchToDefaultMode();
         })
         .appendTo($container),
       training: $('<button />')
         .attr('data-i18n-text', 'nav-trainingMode')
         .addClass('button')
         .on('click', () => {
-          this.switchToMode('training');
+          this.switchToTrainingMode();
         })
         .appendTo($container),
     };
@@ -76,7 +81,7 @@ export default class AutostadtNeuralNumbersApp {
       .append(Object.values(this.#modeSwitchButtons));
   }
 
-  initNNComponent($container) {
+  async initNNComponent($container) {
     const $nnContainer = $('<div></div>')
       .attr('id', 'neural-numbers-component')
       .appendTo($container);
@@ -92,18 +97,27 @@ export default class AutostadtNeuralNumbersApp {
         verticalBars: false,
       }
     );
-    //
-    // this.nnTrainingComponent = new IMAGINARY.NeuralNumbersTraining(
-    //   this.nnComponent,
-    //   this.$nnTrainingUIContainer,
-    //   {
-    //     trainingImagePath: props.trainingImagePath,
-    //     trainingLabelPath: props.trainingLabelPath,
-    //     imageCountLabelText: `<div class='image-count-label-i18n de'>${props.imageCountLabelText.de}</div><div class='image-count-label-i18n en'>${props.imageCountLabelText.en}</div>`,
-    //     predictedAccuracyLabelText: `<div class='predicted-accuracy-label-i18n de'>${props.predictedAccuracyLabelText.de}</div><div class='predicted-accuracy-label-i18n en'>${props.predictedAccuracyLabelText.en}</div>`,
-    //   }
-    // );
-    this.#nnComponent.init();
+
+    this.#nnTrainingController = new IMAGINARY.NeuralNumbersTrainingController(this.#nnComponent, {
+      trainingImagePath: this.config.ai.trainingImagePath,
+      trainingLabelPath: this.config.ai.trainingLabelPath,
+    });
+
+    this.#nnTrainingComponent = new TrainingPanelComponent(
+      'training-panel',
+      this.config,
+      this.#nnComponent,
+      this.#nnTrainingController,
+    );
+
+    this.$nnTrainingUIContainer = $('<div></div>')
+      .attr('id', 'neural-numbers-training-component')
+      .append(this.#nnTrainingComponent.$element)
+      .appendTo($container);
+
+    await this.#nnComponent.init();
+    await this.#nnTrainingController.init();
+    await this.#nnTrainingComponent.enableUI();
   }
 
   setLang(code) {
@@ -125,7 +139,20 @@ export default class AutostadtNeuralNumbersApp {
     this.setLang(langCodes[nextLangIndex]);
   }
 
-  switchToMode(mode) {
+  switchToDefaultMode() {
+    this.switchUiToMode('default');
+    this.#nnTrainingComponent.hide();
+    this.#nnTrainingController.pause();
+    this.#nnTrainingController.useDefaultModel();
+  }
+
+  switchToTrainingMode() {
+    this.switchUiToMode('training');
+    this.#nnTrainingComponent.show();
+    this.#nnTrainingController.useTrainableModel();
+  }
+
+  switchUiToMode(mode) {
     if (!this.contentOverlays[mode]) {
       throw new Error(`Attempt to switch to invalid mode: ${mode}`);
     }

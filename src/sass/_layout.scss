@@ -71,3 +71,18 @@ $nn-component-bars-width: $nn-component-size * 1.5;
     height: 12rem;
   }
 }
+
+#training-panel {
+  position: absolute;
+  left: $ui-col-start;
+  bottom: 150px;
+
+  .strip-panel-division-values {
+    flex-direction: column;
+  }
+
+  .value-display-accuracy {
+    min-width: 2em;
+    text-align: right;
+  }
+}

@@ -54,3 +54,13 @@
     margin-bottom: -0.15em;
   }
 }
+
+.training-strip-panel {
+  //transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+
+  &.hidden {
+    pointer-events: none;
+    opacity: 0;
+  }
+}

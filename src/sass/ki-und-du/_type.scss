@@ -7,3 +7,11 @@
 @mixin heading-text {
   @include fonts.space-grotesk-bold;
 }
+
+@mixin light-text {
+  @include fonts.space-grotesk-light;
+}
+
+.light {
+  @include light-text;
+}
