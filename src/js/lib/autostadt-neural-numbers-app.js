@@ -39,6 +39,18 @@ export default class AutostadtNeuralNumbersApp {
     this.addContentOverlay('training', new TrainingContentOverlay(), this.$content);
     this.showContentOverlay('default');
 
+    this.$inputBoxLabel = $('<div></div>')
+      .attr('id', 'input-box-label')
+      .attr('data-i18n-text', 'ui-inputPanelLabel')
+      .addClass('box-label')
+      .appendTo(this.$element);
+
+    this.$outputBoxLabel = $('<div></div>')
+      .attr('id', 'output-box-label')
+      .attr('data-i18n-text', 'ui-outputPanelLabel')
+      .addClass('box-label')
+      .appendTo(this.$element);
+
     this.initNavElements(this.$content);
   }
 
@@ -200,5 +212,15 @@ export default class AutostadtNeuralNumbersApp {
         $el.html(formatText(strings[textKey]));
       }
     });
+  }
+
+  setI18nText($element, textKey) {
+    const strings = this.config.i18n.strings[this.#lang];
+    $element.attr('data-i18n-text', textKey);
+    if (strings[textKey]) {
+      $element.html(formatText(strings[textKey]));
+    } else {
+      console.warn(`Missing translation for key: ${textKey}`);
+    }
   }
 }

@@ -98,3 +98,17 @@ $nn-component-bars-width: $nn-component-size * 1.5;
   top: 80px;
   left: 880px;
 }
+
+#input-box-label, #output-box-label {
+  position: absolute;
+  width: $nn-component-size;
+  top: 623px;
+}
+
+#input-box-label {
+  left: 751px
+}
+
+#output-box-label {
+  left : 1527px;
+}
