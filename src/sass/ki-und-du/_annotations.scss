@@ -1,0 +1,23 @@
+$cw-arrow-width: 80px;
+$cw-arrow-height: 110px;
+
+.arrow-annotation {
+  font-size: 1.1666rem;
+  line-height: 1.5;
+  position: relative;
+  background-repeat: no-repeat;
+  background-image: url('../../static/img/arrow-annotation-cw.svg');
+  background-size: $cw-arrow-width $cw-arrow-height;
+  background-position: 4.2rem bottom;
+  padding-bottom: calc($cw-arrow-height + 0.75rem);
+}
+
+$ccw-arrow-width: 95px;
+$ccw-arrow-height: 100px;
+
+.arrow-annotation-ccw {
+  background-image: url('../../static/img/arrow-annotation-ccw.svg');
+  padding-left: calc($ccw-arrow-width + 0.2rem);
+  padding-bottom: calc($ccw-arrow-height - 2.6rem);
+  background-position: left bottom;
+}

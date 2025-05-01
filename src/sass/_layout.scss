@@ -86,3 +86,15 @@ $nn-component-bars-width: $nn-component-size * 1.5;
     text-align: right;
   }
 }
+
+#default-mode-input-panel-callout {
+  position: absolute;
+  top: 45px;
+  left: 900px;
+}
+
+#training-mode-input-panel-callout {
+  position: absolute;
+  top: 80px;
+  left: 880px;
+}

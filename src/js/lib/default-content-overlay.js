@@ -11,5 +11,11 @@ export default class DefaultContentOverlay {
       .attr('data-i18n-text', 'defaultMode-body')
       .addClass('body')
       .appendTo(this.$element);
+
+    $('<div>')
+      .attr('id', 'default-mode-input-panel-callout')
+      .attr('data-i18n-text', 'defaultMode-inputPanelCallout')
+      .addClass('arrow-annotation')
+      .appendTo(this.$element);
   }
 }
