@@ -16,6 +16,10 @@ export default class AutostadtNeuralNumbersApp {
     this.width = config.app.display.width ?? 1920;
     this.height = config.app.display.height ?? 1080;
 
+    this.contentOverlays = {};
+    this.currentContentOverlay = null;
+    this.inModeTransition = false;
+
     this.$element = $('<div></div>')
       .addClass(['autostadt-neural-numbers-app', 'app'])
       .css({
@@ -23,13 +27,7 @@ export default class AutostadtNeuralNumbersApp {
         height: this.height,
       });
 
-    this.contentOverlays = {};
-    this.currentContentOverlay = null;
-    this.inModeTransition = false;
-  }
-
-  async init() {
-    const $content = $('<div></div>')
+    this.$content = $('<div></div>')
       .addClass('app-content')
       .appendTo(
         $('<div></div>')
@@ -37,12 +35,15 @@ export default class AutostadtNeuralNumbersApp {
           .appendTo(this.$element)
       );
 
-    this.addContentOverlay('default', new DefaultContentOverlay(), $content);
-    this.addContentOverlay('training', new TrainingContentOverlay(), $content);
+    this.addContentOverlay('default', new DefaultContentOverlay(), this.$content);
+    this.addContentOverlay('training', new TrainingContentOverlay(), this.$content);
     this.showContentOverlay('default');
 
-    this.initNavElements($content);
-    await this.initNNComponent($content);
+    this.initNavElements(this.$content);
+  }
+
+  async init() {
+    await this.initNNComponent(this.$content);
     this.setLang(this.config.i18n.defaultLanguage);
     this.switchToDefaultMode();
   }

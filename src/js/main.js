@@ -55,6 +55,9 @@ import AutostadtNeuralNumbersApp from './lib/autostadt-neural-numbers-app';
     const scaler = new AppScaler(app.$element[0], app.width, app.height);
     $('[data-component=AutostadtNeuralNumbersApp]').replaceWith(scaler.element);
     await app.init();
+    setTimeout(() => {
+      $('body').addClass('loaded');
+    }, 500);
   } catch (err) {
     showFatalError('Fatal error', err);
     console.error(err);
