@@ -25,6 +25,7 @@ export default class AutostadtNeuralNumbersApp {
 
     this.contentOverlays = {};
     this.currentContentOverlay = null;
+    this.inModeTransition = false;
   }
 
   async init() {
@@ -140,16 +141,28 @@ export default class AutostadtNeuralNumbersApp {
   }
 
   switchToDefaultMode() {
+    if (this.inModeTransition) {
+      return;
+    }
+    this.inModeTransition = true;
     this.switchUiToMode('default');
-    this.#nnTrainingComponent.hide();
-    this.#nnTrainingController.pause();
-    this.#nnTrainingController.useDefaultModel();
+    this.#nnTrainingComponent.hide().then(() => {
+      this.#nnTrainingController.pause();
+      this.#nnTrainingController.useDefaultModel();
+      this.inModeTransition = false;
+    });
   }
 
   switchToTrainingMode() {
+    if (this.inModeTransition) {
+      return;
+    }
+    this.inModeTransition = true;
     this.switchUiToMode('training');
-    this.#nnTrainingComponent.show();
-    this.#nnTrainingController.useTrainableModel();
+    this.#nnTrainingComponent.show().then(() => {
+      this.#nnTrainingController.useTrainableModel();
+      this.inModeTransition = false;
+    });
   }
 
   switchUiToMode(mode) {

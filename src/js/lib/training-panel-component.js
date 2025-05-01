@@ -1,3 +1,5 @@
+import sleep from '../helpers/sleep';
+
 const createRoundButton = (id, clickHandler) => $('<button>')
   .addClass(['button', 'button-round', `button-round-${id}`])
   .on('click', clickHandler)
@@ -29,9 +31,11 @@ export default class TrainingPanelComponent {
     this.config = config;
     this.nnComponent = nnComponent;
     this.trainingController = trainingController;
+    this.transitionDuration = this.config?.app?.ui?.trainingPanelTransitionDuration || 0;
     this.$element = $('<div>')
       .attr('id', id)
-      .addClass(['strip-panel', 'training-strip-panel', 'bg-secondary']);
+      .addClass(['strip-panel', 'training-strip-panel', 'bg-secondary'])
+      .css('transition-duration', `${this.transitionDuration}s`);
 
     this.$stepButton = createRoundButton('step', this.handleStepButton.bind(this));
     this.$runButton = createRoundButton('run', this.handleRunButton.bind(this));
@@ -76,12 +80,14 @@ export default class TrainingPanelComponent {
       .appendTo(this.$element);
   }
 
-  hide() {
+  async hide() {
     this.$element.addClass('hidden');
+    return sleep(this.transitionDuration * 1000);
   }
 
-  show() {
+  async show() {
     this.$element.removeClass('hidden');
+    return sleep(this.transitionDuration * 1000);
   }
 
   enableUI() {
