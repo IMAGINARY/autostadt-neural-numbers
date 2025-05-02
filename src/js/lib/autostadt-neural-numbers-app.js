@@ -388,6 +388,7 @@ export default class AutostadtNeuralNumbersApp {
    * Event handler for the start of the training process.
    */
   handleTrainingStart() {
+    this.$element.addClass('is-training');
     this.setI18nText(this.#$inputBoxLabel, 'trainingMode-inputPanelRunningLabel');
     this.setI18nText(this.#$outputBoxLabel, '');
   }
@@ -396,6 +397,7 @@ export default class AutostadtNeuralNumbersApp {
    * Event handler for the completion of the training process.
    */
   handleTrainingPause() {
+    this.$element.removeClass('is-training');
     this.setI18nText(this.#$inputBoxLabel, 'ui-inputPanelLabel');
     this.setI18nText(this.#$outputBoxLabel, 'ui-outputPanelLabel');
   }

@@ -23,7 +23,8 @@
   }
 
   .input-canvas-wrapper {
-    border: none;
+    box-sizing: border-box;
+    border: 4px solid transparent;
     background-color: colors.$c-white;
     border-radius: 1.5rem;
     overflow: hidden;
@@ -42,6 +43,8 @@
       @include fonts.space-grotesk-light;
 
       color: colors.$c-black;
+      transition: opacity 0.15s ease-in-out;
+      opacity: 1;
     }
   }
 
@@ -51,6 +54,20 @@
     font-size: 1.333rem;
     padding-bottom: 0;
     margin-bottom: -0.15em;
+  }
+}
+
+.is-training {
+  .neural-numbers-component {
+    .input-canvas-wrapper {
+      border: 4px dashed colors.$c-accent;
+    }
+
+    .output-wrapper {
+      .digit {
+        opacity: 0;
+      }
+    }
   }
 }
 
