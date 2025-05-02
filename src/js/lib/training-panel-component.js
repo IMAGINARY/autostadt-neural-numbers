@@ -1,30 +1,10 @@
 import sleep from '../helpers/sleep';
-
-const createRoundButton = (id, clickHandler) => $('<button>')
-  .addClass(['button', 'button-round', `button-round-${id}`])
-  .on('click', clickHandler)
-  .append(
-    $('<div></div>')
-      .addClass(['icon', `icon-${id}`])
-  );
-
-const createLabel = (id, textId) => $('<span></span>')
-  .addClass(['label', `label-${id}`])
-  .attr('data-i18n-text', textId);
-
-const createButtonLabelGroup = (id, textId, $button) => $('<div></div>')
-  .addClass(['button-label-group', `button-label-group-${id}`])
-  .append($button)
-  .append(createLabel(id, textId));
-
-const createValueDisplay = (id, initialText = '') => $('<span></span>')
-  .addClass(['value-display', `value-display-${id}`])
-  .text(initialText);
-
-const createValueLabelGroup = (id, textId, $valueDisplay) => $('<div></div>')
-  .addClass(['value-label-group', `value-label-group-${id}`])
-  .append(createLabel(id, textId))
-  .append($valueDisplay);
+import {
+  createRoundButton,
+  createButtonLabelGroup,
+  createValueDisplay,
+  createValueLabelGroup,
+} from '../helpers-web/ui';
 
 export default class TrainingPanelComponent {
   constructor(id, config, nnComponent, trainingController) {
