@@ -68,7 +68,7 @@ module.exports = {
               sassOptions: {
                 loadPaths: ['./node_modules'],
                 quietDeps: true,
-              }
+              },
             },
           },
         ],

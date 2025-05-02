@@ -1,6 +1,5 @@
 @use "@fontsource-utils/scss" as fontsource;
 @use "@fontsource/space-grotesk/scss" as SpaceGrotesk;
-
 @include fontsource.faces(
   $metadata: SpaceGrotesk.$metadata,
   $subsets: latin,

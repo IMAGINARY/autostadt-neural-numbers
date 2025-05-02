@@ -65,8 +65,7 @@ $round-button-size: 4.444rem;
 
 .button-label-group {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   align-items: center;
 
   .button-round {
@@ -81,11 +80,13 @@ $round-button-size: 4.444rem;
 
   .label {
     @include type.light-text;
+
     margin-right: 0.5rem;
   }
 
   .value-display {
     @include type.regular-text;
+
     font-weight: bold;
     font-size: 1.333em;
   }

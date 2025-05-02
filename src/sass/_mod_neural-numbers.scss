@@ -7,14 +7,11 @@
   }
 
   .bars {
-    &:before {
+    &::before {
       display: block;
       content: " ";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 1.5rem;
+      inset: 0 0 1.5rem;
       background-image: url('../../static/img/bars-scale.svg');
     }
 
@@ -37,18 +34,20 @@
     border: 0.15rem solid white;
     border-radius: 1.5rem;
 
-    &:before {
+    &::before {
       display: none;
     }
 
     .digit {
       @include fonts.space-grotesk-light;
+
       color: colors.$c-black;
     }
   }
 
   .bartxt {
     @include fonts.space-grotesk-regular;
+
     font-size: 1.333rem;
     padding-bottom: 0;
     margin-bottom: -0.15em;
@@ -56,7 +55,7 @@
 }
 
 .training-strip-panel {
-  //transition: opacity 0.3s ease-in-out;
+  // transition: opacity 0.3s ease-in-out;
   opacity: 1;
 
   &.hidden {

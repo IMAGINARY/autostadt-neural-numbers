@@ -2,8 +2,7 @@ $strip-panel-height: 7.5rem;
 
 .strip-panel {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   height: $strip-panel-height;
   border-radius: $strip-panel-height * 0.5;
   padding: 1.5rem;
