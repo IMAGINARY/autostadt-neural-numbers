@@ -230,6 +230,9 @@ export default class AutostadtNeuralNumbersApp {
       .append(this.#nnTrainingComponent.$element)
       .appendTo($container);
 
+    this.#nnTrainingController.events.on('start', this.handleTrainingStart.bind(this));
+    this.#nnTrainingController.events.on('pause', this.handleTrainingPause.bind(this));
+
     await this.#nnComponent.init();
     await this.#nnTrainingController.init();
     await this.#nnTrainingComponent.enableUI();
@@ -379,5 +382,21 @@ export default class AutostadtNeuralNumbersApp {
     } else {
       $element.html(textKey);
     }
+  }
+
+  /**
+   * Event handler for the start of the training process.
+   */
+  handleTrainingStart() {
+    this.setI18nText(this.#$inputBoxLabel, 'trainingMode-inputPanelRunningLabel');
+    this.setI18nText(this.#$outputBoxLabel, '');
+  }
+
+  /**
+   * Event handler for the completion of the training process.
+   */
+  handleTrainingPause() {
+    this.setI18nText(this.#$inputBoxLabel, 'ui-inputPanelLabel');
+    this.setI18nText(this.#$outputBoxLabel, 'ui-outputPanelLabel');
   }
 }
