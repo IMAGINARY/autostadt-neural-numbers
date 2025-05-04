@@ -49,7 +49,7 @@
   },
   "private": true,
   "scripts": {
-    "postinstall": "rm -rf vendor/neural-numbers && degit github:IMAGINARY/neural-numbers#v1.5.2 --force vendor/neural-numbers",
+    "postinstall": "rm -rf vendor/neural-numbers && degit github:IMAGINARY/neural-numbers#v1.6.0 --force vendor/neural-numbers",
     "build": "npx webpack",
     "watch": "npx webpack --watch"
   }
