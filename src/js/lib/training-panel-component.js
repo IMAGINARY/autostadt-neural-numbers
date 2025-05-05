@@ -99,10 +99,16 @@ export default class TrainingPanelComponent {
   }
 
   handleStepButton() {
+    if (this.trainingController.isTraining()) {
+      this.trainingController.pause();
+    }
     this.trainingController.step();
   }
 
   handleResetButton() {
+    if (this.trainingController.isTraining()) {
+      this.trainingController.pause();
+    }
     this.trainingController.reset();
   }
 
