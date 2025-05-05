@@ -1,5 +1,5 @@
 $info-col-width: 24%;
-$ui-col-start: 38%;
+$ui-col-start: 37.5%;
 
 h1 {
   position: absolute;
@@ -10,7 +10,7 @@ h1 {
 
 .body {
   position: absolute;
-  top: 500px;
+  top: 530px;
   left: 0;
   max-width: $info-col-width;
 }
@@ -27,13 +27,13 @@ h1 {
   left: $ui-col-start;
 }
 
-$nn-component-size: 16rem;
+$nn-component-size: 15.5rem;
 $nn-component-bars-height: $nn-component-size * 0.75;
-$nn-component-bars-width: $nn-component-size * 1.5;
+$nn-component-bars-width: 24rem;
 
 #neural-numbers-component {
   position: absolute;
-  bottom: 360px;
+  bottom: 345px;
   left: $ui-col-start;
   align-items: flex-end;
 
@@ -70,13 +70,14 @@ $nn-component-bars-width: $nn-component-size * 1.5;
   .bars {
     width: $nn-component-bars-width;
     height: 12rem;
+    padding: 0 0.5rem;
   }
 }
 
 #training-panel {
   position: absolute;
   left: $ui-col-start;
-  bottom: 150px;
+  bottom: 170px;
 
   .strip-panel-division-values {
     flex-direction: column;
@@ -90,26 +91,26 @@ $nn-component-bars-width: $nn-component-size * 1.5;
 
 #default-mode-input-panel-callout {
   position: absolute;
-  top: 45px;
-  left: 900px;
+  top: 74px;
+  left: 886px;
 }
 
 #training-mode-input-panel-callout {
   position: absolute;
-  top: 80px;
-  left: 880px;
+  top: 90px;
+  left: 872px;
 }
 
 #input-box-label, #output-box-label {
   position: absolute;
   width: $nn-component-size;
-  top: 623px;
+  top: 635px;
 }
 
 #input-box-label {
-  left: 751px
+  left: 743px
 }
 
 #output-box-label {
-  left : 1527px;
+  left : 1510px;
 }

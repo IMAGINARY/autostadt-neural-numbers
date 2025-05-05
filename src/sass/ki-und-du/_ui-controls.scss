@@ -54,7 +54,6 @@ $round-button-size: 4.444rem;
     height: 100%;
     top: 0;
     left: 0;
-    background-size: 50% 50%;
   }
 
   &:active, &.active {
@@ -89,6 +88,7 @@ $round-button-size: 4.444rem;
 
     font-weight: bold;
     font-size: 1.333em;
+    margin-right: 0.5rem;
   }
 }
 

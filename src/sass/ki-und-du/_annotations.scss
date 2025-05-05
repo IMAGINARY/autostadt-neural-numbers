@@ -17,7 +17,8 @@ $ccw-arrow-height: 100px;
 
 .arrow-annotation-ccw {
   background-image: url('../../static/img/arrow-annotation-ccw.svg');
-  padding-left: calc($ccw-arrow-width + 0.2rem);
+  background-size: $ccw-arrow-width $ccw-arrow-height;
+  padding-left: calc($ccw-arrow-width + 1rem);
   padding-bottom: calc($ccw-arrow-height - 2.6rem);
   background-position: left bottom;
 }
