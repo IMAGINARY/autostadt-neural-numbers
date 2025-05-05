@@ -281,6 +281,7 @@ export default class AutostadtNeuralNumbersApp {
     }
     this.#inModeTransition = true;
     this.switchUiToMode('default');
+    this.#nnComponent.clearInput();
     this.#nnTrainingComponent.hide().then(() => {
       this.#nnTrainingController.pause();
       this.#nnTrainingController.useDefaultModel();
@@ -297,6 +298,7 @@ export default class AutostadtNeuralNumbersApp {
     }
     this.#inModeTransition = true;
     this.switchUiToMode('training');
+    this.#nnComponent.clearInput();
     this.#nnTrainingComponent.show().then(() => {
       this.#nnTrainingController.useTrainableModel();
       this.#inModeTransition = false;
