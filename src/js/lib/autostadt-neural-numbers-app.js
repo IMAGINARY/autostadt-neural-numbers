@@ -216,6 +216,7 @@ export default class AutostadtNeuralNumbersApp {
     this.#nnTrainingController = new IMAGINARY.NeuralNumbersTrainingController(this.#nnComponent, {
       trainingImagePath: this.config.ai.trainingImagePath,
       trainingLabelPath: this.config.ai.trainingLabelPath,
+      trainingAntialiasing: this.config.app.ui.trainingAntialiasing,
     });
 
     this.#nnTrainingComponent = new TrainingPanelComponent(

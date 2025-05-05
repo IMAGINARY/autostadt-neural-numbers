@@ -8,3 +8,5 @@ app:
   ui:
     # Time in seconds it takes for the training panel to appear or disappear
     trainingPanelTransitionDuration: 0.3
+    # If true, will apply antialiasing for the training data
+    trainingAntialiasing: false
