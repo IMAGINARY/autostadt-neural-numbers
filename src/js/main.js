@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import '../sass/default.scss';
 import yaml from 'js-yaml';
+import initSentry from './helpers/sentry';
 import showFatalError from './helpers-web/show-fatal-error';
 import CfgLoader from './loader/cfg-loader';
 import CfgReaderFetch from './loader/cfg-reader-fetch';
@@ -10,6 +11,12 @@ import AutostadtNeuralNumbersApp from './lib/autostadt-neural-numbers-app';
 (async () => {
   try {
     const urlParams = new URLSearchParams(window.location.search);
+
+    const sentryDSN = urlParams.get('sentry-dsn');
+    let sentryInitialized = false;
+    if (sentryDSN) {
+      sentryInitialized = !!initSentry(sentryDSN);
+    }
 
     // Accept a settings url param but only if it's made of alphanumeric characters, _ or -, and
     // has a .yml extension.
@@ -34,6 +41,10 @@ import AutostadtNeuralNumbersApp from './lib/autostadt-neural-numbers-app';
     ]).catch((err) => {
       throw new Error(`Error loading configuration: ${err.message}`);
     });
+
+    if (!sentryInitialized && config?.app?.sentry?.dsn) {
+      sentryInitialized = !!initSentry(config.app.sentry.dsn);
+    }
 
     // Load the translations
     const trLangCodes = Object.keys(config.i18n.languages);

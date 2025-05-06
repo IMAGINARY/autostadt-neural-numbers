@@ -10,3 +10,8 @@ app:
     trainingPanelTransitionDuration: 0.3
     # If true, will apply antialiasing for the training data
     trainingAntialiasing: false
+  sentry:
+    # Sentry DSN for error tracking
+    # Override this value through settings.yml, not here.
+    # see README.md for alternatives.
+    # dsn: "xxx"

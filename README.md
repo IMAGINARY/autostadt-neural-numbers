@@ -28,6 +28,14 @@ npm run watch
 
 to watch for changes and rebuild the project.
 
+## Sentry
+
+The app supports Sentry.
+
+The `index.html` page can take the DSN from the `sentry-dsn` query string parameter.
+
+It can also get the DSN from the `app.sentry.dsn` configuration key in the  `settings.yml` file.
+
 ## Credits
 
 Developed by Imaginary gGmbH with the support of Autostadt GmbH for the Ki und Du exhibition.

@@ -20,8 +20,6 @@
     "@babel/preset-env": "^7.26.9",
     "@fontsource/space-grotesk": "^5.2.5",
     "@fontsource-utils/scss": "^0.2.1",
-    "@sentry/browser": "^7.120.3",
-    "@sentry/integrations": "^7.120.3",
     "babel-loader": "^9.2.1",
     "bootstrap": "^5.3.5",
     "clean-webpack-plugin": "^4.0.0",
@@ -44,6 +42,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@sentry/browser": "^9.15.0",
     "deepmerge": "^4.3.1",
     "js-yaml": "^4.1.0"
   },
