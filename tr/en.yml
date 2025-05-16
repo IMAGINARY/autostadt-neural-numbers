@@ -11,11 +11,11 @@ ui-trainingPanel-reset: "Reset\nTraining"
 nav-defaultMode: "Pretrained AI"
 nav-trainingMode: "Train the AI Yourself"
 #
-defaultMode-title: "Can the AI\nRecognize\nyour Number?"
+defaultMode-title: "Can AI\nread your Number?"
 defaultMode-body: "Instead of giving just one answer, the AI checks several possibilities and estimates how likely each one is. The clearer the features, the more confident it is — but with blurry or ambiguous input, it may hesitate or get it wrong."
 defaultMode-inputPanelCallout: "Write a number\nbetween 0 and 9"
 #
-trainingMode-title: "Train\nan AI\nYourself!"
+trainingMode-title: "Train an AI\nYourself!"
 trainingMode-body: "The predicted accuracy rises quickly at first, then more slowly. Sometimes it even dips a little. That’s normal. Just like in life, mistakes can help you learn and improve."
 trainingMode-inputPanelCallout: "You can pause the training and\ntry the AI in its current state."
 trainingMode-inputPanelRunningLabel: "Training..."
