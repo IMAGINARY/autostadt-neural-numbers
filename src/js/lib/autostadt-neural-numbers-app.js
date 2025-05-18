@@ -403,5 +403,8 @@ export default class AutostadtNeuralNumbersApp {
     this.$element.removeClass('is-training');
     this.setI18nText(this.#$inputBoxLabel, 'ui-inputPanelLabel');
     this.setI18nText(this.#$outputBoxLabel, 'ui-outputPanelLabel');
+    setTimeout(() => {
+      this.#nnComponent.clearInput();
+    }, 100);
   }
 }
