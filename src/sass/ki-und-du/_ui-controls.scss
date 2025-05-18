@@ -29,6 +29,11 @@
   &:active, &.active {
     background-color: colors.$c-accent;
   }
+
+  &:disabled, &.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+  }
 }
 
 .button-set {
